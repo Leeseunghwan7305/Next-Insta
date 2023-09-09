@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import Nav from "./common/Nav";
 
 const Open = Open_Sans({ subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={Open.className}>{children}</body>
+      <body className={Open.className}>
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }
