@@ -10,12 +10,14 @@ import NewIcon from "./ui/icons/NewIcon";
 import NewFillIcon from "./ui/icons/NewFillIcon";
 import ColorButton from "./ui/ColorButton";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Avatar from "../components/Avatar/page";
 
 const Nav = () => {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const user = session?.user;
 
-  console.log(session);
+  console.log(user);
   const menu = [
     { href: "/", icon: <HomeIcon />, clickedIcon: <HomeFillIcon /> },
     { href: "/search", icon: <SearchIcon />, clickedIcon: <SearchFillIcon /> },
@@ -36,12 +38,22 @@ const Nav = () => {
               </Link>
             </li>
           ))}
+
+          {user && (
+            <li>
+              <Link href={`/user/${user.username}`}>
+                <Avatar image={user.image} />
+              </Link>
+            </li>
+          )}
+          <li>
+            {session ? (
+              <ColorButton text="Sign out" onClick={() => signOut()} />
+            ) : (
+              <ColorButton text="Sign in" onClick={() => signIn()} />
+            )}
+          </li>
         </ul>
-        {session ? (
-          <ColorButton text="Sign out" onClick={() => signOut()} />
-        ) : (
-          <ColorButton text="Sign in" onClick={() => signIn()} />
-        )}
       </nav>
     </header>
   );
