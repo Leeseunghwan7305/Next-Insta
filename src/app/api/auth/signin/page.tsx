@@ -3,7 +3,7 @@ import React from "react";
 import { authOptions } from "../[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { getProviders } from "next-auth/react";
-import SignInPage from "@/components/SignIn/page";
+import SignInPage from "@/app/components/SignIn/page";
 
 type Props = {
   searchParams: {

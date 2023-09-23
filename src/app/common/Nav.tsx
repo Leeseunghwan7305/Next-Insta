@@ -17,7 +17,6 @@ const Nav = () => {
   const { data: session } = useSession();
   const user = session?.user;
 
-  console.log(user);
   const menu = [
     { href: "/", icon: <HomeIcon />, clickedIcon: <HomeFillIcon /> },
     { href: "/search", icon: <SearchIcon />, clickedIcon: <SearchFillIcon /> },
@@ -41,8 +40,8 @@ const Nav = () => {
 
           {user && (
             <li>
-              <Link href={`/user/${user.username}`}>
-                <Avatar image={user.image} />
+              <Link href={`/user/${user.name}`}>
+                <Avatar image={user.image} size="small" highlight />
               </Link>
             </li>
           )}
