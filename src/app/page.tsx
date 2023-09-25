@@ -16,12 +16,12 @@ export default async function Home() {
   return (
     <main>
       <section className="w-full flex flex-col md:flex-row max-w-[850px]">
-        <article className="w-full basis-3/4">
+        <article className="w-full basis-3/4 min-w-0">
           <FollowingBar />
           <PostList />
         </article>
         {user && (
-          <article className="basis-1/4">
+          <article className="basis-1/4 ml-8">
             <SideBar user={user} />
           </article>
         )}
